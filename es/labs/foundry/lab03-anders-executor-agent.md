@@ -402,17 +402,17 @@ El system prompt incluye el schema JSON exacto que Anders debe construir al invo
 
 ```json
 {
-  "customerName": "Nombre del Cliente",
+  "customerName": "Client Name",
   "startDate": "YYYY-MM-DD",
   "endDate": "YYYY-MM-DD",
   "orders": [
     {
-      "orderNumber": "código de la orden",
+      "orderNumber": "order code",
       "orderDate": "YYYY-MM-DD",
       "orderLineNumber": 1,
-      "productName": "nombre del producto",
-      "brandName": "nombre de la marca",
-      "categoryName": "nombre de la categoría",
+      "productName": "product name",
+      "brandName": "brand name",
+      "categoryName": "category name",
       "quantity": 1.0,
       "unitPrice": 0.00,
       "lineTotal": 0.00
