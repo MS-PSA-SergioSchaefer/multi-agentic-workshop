@@ -134,11 +134,11 @@ The workshop is divided into independent but connected labs, organized by archit
 - [Lab 10 – Give Bill oragnizational/work context with Work IQ](./labs/copilot/lab010-bill-workiq.en.md)
 - [Lab 11 – Publishing Bill in Microsoft 365 / Teams and end‑to‑end tests](./labs/copilot/lab011-bill-publishing.en.md)
 
-### 4. Microsoft Agent 365 lab
+### 4. Microsoft Agent 365 lab (optional)
 
 - [Lab 12 – Keep Agents secure, compliance and under control](./labs/agent365/lab12-agent365.en.md)
 
-### 5. A2A lab (optinal)
+### 5. A2A lab (optional)
 
 - [Lab 13 – A2A-enabled Agent Framework agent hosted on Azure Container App](./labs/a2a/lab13-anne-a2a-agent.en.md)
 
