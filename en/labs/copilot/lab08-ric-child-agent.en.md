@@ -1,16 +1,17 @@
-# Bill & Child Customer Notifications Agent
+# Bill Customer Notifications Agent with a Skill 
 
 ## 🎯 Mission summary
 
-In this hands-on lab, you will create the initial definition of Bill and execute the main instructions to create Ric as a child agent.  
-As a child agent, Ric will be responsible for sending an email to the user with the required information when requested.
+In this hands-on lab, you will create the initial definition of Bill and define the main instructions to create Ric as a skill that Bill can use to extend its functionality.
+
+While doing so, you'll also explore the Microsoft Copilot harness capability by iteratively refining a skills(Ric): The Skill will be responsible for sending an email to the user with the required information when requested.
 
 ## 🔎 Objectives
 
 By completing this lab, you will obtain:
 
 - Initial construction of the Bill agent based on the instructions described in this document.
-- Creation of Ric as a child agent for Bill.
+- Creation of Ric as a skill for Bill.
 - Testing the workflow.
 
 ---
@@ -19,7 +20,7 @@ By completing this lab, you will obtain:
 
 ### Configure Bill agent instructions
 
-1. **Navigate** to Microsoft Copilot Studio. Make sure the **MultiAgentWrkshp** environment is selected in the upper-right corner, in the **environment selector**.
+1. **Navigate** to Microsoft Copilot Studio. Make sure the **Default** environment is selected in the upper-right corner, in the **environment selector**.
 2. Select **Agents** and click **+ Create Blank Agent**.
 3. In the **Details** card, click **Edit** to change the name and add a description:
    - **Name**: Bill
