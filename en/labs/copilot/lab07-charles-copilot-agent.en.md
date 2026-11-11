@@ -69,6 +69,7 @@ By completing this lab, you will:
    - If important information is missing, indicate it instead of making assumptions.
    ```
 
+4. Save the changes (Top right corner - Save Icon).
 ---
 
 ## SharePoint creation
@@ -81,15 +82,17 @@ By completing this lab, you will:
    ![imagen](img/image3_Charlie.png)
 
 3. Open SharePoint.
-4. Create a new site by selecting **+ create a site** in the upper-left corner.
-5. Select **Teams Site**.
+4. Create a new site by selecting **Build** in the left menu.
+5. Ensure the **Teams Site** is selected.
+6. Choose the Standard team template.
 
    ![imagen](img/image4_Charlie.png)
 
-6. Choose a standard team template and select **Use Template**.
-7. For the name, use **Product Repository**.
-8. For Privacy settings: **Public – anyone in the organization can access this site**.
-9. In the **add members** section, select your user and select **Finish**.
+7. Select **Use Template** in the confirmation screen.
+8. For the name, use **Product Repository**.
+9. For Privacy settings: **Public – anyone in the organization can access this site**.
+10. Select the **Create site**.
+11. While you wait **add members** , type your user and select **Go to site** (once the button is enabled).
 
 Great! Now we have our SharePoint site. Go to the **Documents** section:
 
