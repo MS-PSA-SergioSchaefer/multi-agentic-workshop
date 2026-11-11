@@ -126,34 +126,39 @@ The **Add knowledge** window opens with the options as below.
 
 ## Publish the agent
 
-1. Select the **Publish** button in the upper-right corner. A pop-up window will open to confirm that you really want to publish your agent.
+1. Select the **Publish** button in the upper-right corner. A pop-up window will open, here we will first select the **+ Add channel**.
 
    ![imagen](img/image10_Charlie.png)
 
-2. Select **Publish agent** to confirm publishing your agent. A message will appear indicating that the agent is being published. You do not need to keep that window open. You will receive a notification when the agent is published.
+2. Select **Teams + Microsoft 365**
 
    ![imagen](img/image11_Charlie.png)
 
-3. When the agent finishes publishing, you will see the notification at the top of the agent page.
-4. Now, before testing the agent, let’s configure a channel. Select the **Channels** section as shown below.
+3. Here we will configure our Agent information before we publish.
+4. Select the **About info** option and populate fields as follows (Anything not indicated leave as-is):
 
+  - **Short description:** "Helps users answer product questions."
+  - **Long description:** "Helps users answer product questions using SharePoint content and perform market or competitor comparisons using public information when explicitly requested"
+
+6. Press the **Add Channel** to commit chantes and continue to publish the Agent.
+   
    ![imagen](img/image12_Charlie.png)
 
-5. In the **Channels** section, select **Teams and Microsoft 365 Copilot**.
+7. Now that the channel is configured, press the **Publish agent**
 
    ![imagen](img/image13_Charlie.png)
 
-6. Now, in the side panel, select **Turn on Microsoft 365** and then select **Add Channel**.
+8. Now, in the side panel, select **Turn on Microsoft 365** and then select **Add Channel**.
 
    ![imagen](img/image14_Charlie.png)
 
-7. Adding the channel will take a moment. When it completes, a green notification will appear at the top of the side panel. If a pop-up appears asking you to publish again, select **Publish** and wait for it to complete.
-8. Select **See agent in Microsoft 365** to open a new tab.
-9. Now, in the Microsoft 365 app, you will see a pop-up window. Select **Add**.
+9. Adding the channel will take a moment. When it completes, a green notification will appear at the top of the side panel. If a pop-up appears asking you to publish again, select **Publish** and wait for it to complete.
+10. Select **See agent in Microsoft 365** to open a new tab.
+11. Now, in the Microsoft 365 app, you will see a pop-up window. Select **Add**.
 
    ![imagen](img/image15_Charlie.png)
 
-10. Now our agent is ready to be tested!
+11. Now our agent is ready to be tested!
 
 ---
 
