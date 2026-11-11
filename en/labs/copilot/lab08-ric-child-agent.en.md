@@ -1,17 +1,21 @@
-# Bill Customer Notifications Agent with a Skill 
+# Bill Customer Notifications Agent 
 
 ## 🎯 Mission summary
 
-In this hands-on lab, you will create the initial definition of Bill and define the main instructions to create Ric as a skill that Bill can use to extend its functionality.
+In this hands-on lab, you will create the initial definition of Bill using the new [Microsoft Copilot Harness](https://learn.microsoft.com/en-us/microsoft-copilot-studio/harnesses-overview) and define the main instructions for the agent.
 
-While doing so, you'll also explore the Microsoft Copilot harness capability by iteratively refining a skills(Ric): The Skill will be responsible for sending an email to the user with the required information when requested.
+While doing so, you'll also explore the Microsoft Copilot harness capability by iteratively refining a skill: The "Email Skill" will be responsible for sending an email to the user with the required information when requested.
+
+## 🧠 What is a skill?
+
+Skills are reusable capabilities available to Microsoft Copilot harness agents in Copilot Studio. Each skill provides focused guidance for a specific scenario, business process, or task by defining when it should be used, what information to collect, which tools to call, and how the agent should respond.
 
 ## 🔎 Objectives
 
 By completing this lab, you will obtain:
 
 - Initial construction of the Bill agent based on the instructions described in this document.
-- Creation of Ric as a skill for Bill.
+- Creation of the email skill for Bill to use.
 - Testing the workflow.
 
 ---
