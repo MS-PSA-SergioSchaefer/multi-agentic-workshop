@@ -1,4 +1,14 @@
-# MCS – Let’s build the Charles agent
+# MCS – Let’s build the Charles agent using the new Microsoft Copilot Harness
+
+## 💯 Microsoft Copilot Harness
+
+The [Microsoft Copilot harness](https://learn.microsoft.com/en-us/microsoft-copilot-studio/harnesses-overview) is designed for reasoning-heavy, multi-step work. Instead of designing every conversation path manually, you describe the agent's purpose and behavior, then connect the knowledge and capabilities it needs.
+
+**Microsoft Copilot harness versus standard harness**
+
+- The standard harness organizes agent behavior around topics, prompts, branching logic, and defined conversation paths. The Microsoft Copilot harness uses natural-language instructions and goal-driven orchestration to reason about what to do next.
+
+- The Microsoft Copilot harness also brings agent configuration, testing, evaluation, and monitoring into a unified, tab-based authoring surface. Agents can't be transferred between the standard and Microsoft Copilot harnesses because each uses a different architecture.
 
 ## 🎯 Mission summary
 
