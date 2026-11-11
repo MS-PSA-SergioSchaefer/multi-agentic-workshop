@@ -92,25 +92,25 @@ By completing this lab, you will:
 8. For the name, use **Product Repository**.
 9. For Privacy settings: **Public – anyone in the organization can access this site**.
 10. Select the **Create site**.
-11. While you wait **add members** , type your user and select **Go to site** (once the button is enabled).
+11. While you wait **add a member**, type your user and select **Go to site** (once the button is enabled).
 
 Great! Now we have our SharePoint site. Go to the **Documents** section:
 
 ![imagen](img/image5_Charlie.png)
 
-10. Create a new folder and name it **Products**.
+10. Create a new folder and name it **Products** (Press the "**+ Create or upload**" button to do so)".
 11. When ready, upload the file **Product_Catalog** that you downloaded from the GitHub repository [taller-multi-agentic/assets/Product_Catalog.docx](https://github.com/warnov/taller-multi-agentic/blob/main/assets/Product_Catalog.docx).
 12. The knowledge base is ready! Let’s go back to the agent configuration.
 
 ---
 
-## Configure knowledge sources
+## Configure knowledge sources in the Agent
 
-In the agent **Overview** section, add the agent knowledge sources as shown below:
+In the agent **Build** section, add the agent knowledge sources as shown below:
 
 ![imagen](img/image6_Charlie.png)
 
-**Make sure the “Web Search” option is enabled.**
+The **Add knowledge** window opens with the options as below.
 
 ![imagen](img/image7_Charlie.png)
 
@@ -122,7 +122,6 @@ In the agent **Overview** section, add the agent knowledge sources as shown belo
 3. Now select **Add to agent** to complete the process.
 
    ![imagen](img/image9_Charlie.png)
-
 ---
 
 ## Publish the agent
@@ -131,7 +130,7 @@ In the agent **Overview** section, add the agent knowledge sources as shown belo
 
    ![imagen](img/image10_Charlie.png)
 
-2. Select **Publish** to confirm publishing your agent. A message will appear indicating that the agent is being published. You do not need to keep that window open. You will receive a notification when the agent is published.
+2. Select **Publish agent** to confirm publishing your agent. A message will appear indicating that the agent is being published. You do not need to keep that window open. You will receive a notification when the agent is published.
 
    ![imagen](img/image11_Charlie.png)
 
