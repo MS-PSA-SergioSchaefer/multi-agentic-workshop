@@ -148,13 +148,13 @@ The **Add knowledge** window opens with the options as below.
 
    ![imagen](img/image13_Charlie.png)
 
-8. Now, in the side panel, select **Turn on Microsoft 365** and then select **Add Channel**.
+8. The window will close and you should see on the top right corner a Publishing status.
+
+9. Once the Agent is published you should see a pop-up indicating that the Agent has been published. in this same window press the "**View in Teams + Microsoft 365**" link  
 
    ![imagen](img/image14_Charlie.png)
 
-9. Adding the channel will take a moment. When it completes, a green notification will appear at the top of the side panel. If a pop-up appears asking you to publish again, select **Publish** and wait for it to complete.
-10. Select **See agent in Microsoft 365** to open a new tab.
-11. Now, in the Microsoft 365 app, you will see a pop-up window. Select **Add**.
+10. Now, in the Microsoft 365 app, you will see a pop-up window. Select **Add**.
 
    ![imagen](img/image15_Charlie.png)
 
