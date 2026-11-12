@@ -1,4 +1,4 @@
-# Bill Customer Notifications Agent 
+# Bill as Customer Notifications Agent that uses skills 
 
 ## 🎯 Mission summary
 
@@ -24,26 +24,20 @@ By completing this lab, you will obtain:
 
 ### Configure Bill agent instructions
 
-1. **Navigate** to Microsoft Copilot Studio. Make sure the **Default** environment is selected in the upper-right corner, in the **environment selector**.
-2. Select **Agents** and click **+ Create Blank Agent**.
-3. In the **Details** card, click **Edit** to change the name and add a description:
+1. **Navigate** to Microsoft Copilot Studio. Make sure the correct environment is selected in the upper-right corner, in the **environment selector**.
+2. Select **Agents** and click **Agent** from the options.
+
+   ![imagen](img/image1_Charlie.png)  
+
+3. Change the name:
    - **Name**: Bill
-   - **Description**: Central orchestrator for all retail customer support activities
-   - Select **Save** to save the agent (it may take a moment for the changes to become visible).
-
-   ![imagen](img/image1_4f5190e7.png)  
-   ![imagen](img/image2_4f5190e7.png)
-
-4. Select **Edit** in the **Instructions** section of the agent **Overview** tab:
-
-   ![imagen](img/image3_4f5190e7.png)
 
 5. Copy and paste the following instructions into the instructions input field:
 
    ```text
    You are Bill, an orchestrator agent. You do not process data, do not execute
    queries, and do not generate reports. You only detect the user's intent and
-   delegate the request to the correct agent with the minimum possible
+   delegate the request to the correct agent or skill with the minimum possible
    transformation.
 
    Email sending requests
@@ -53,12 +47,11 @@ By completing this lab, you will obtain:
    "email this to me"
    → Delegate directly to Ric.
    ```
-
 6. Select **Save**.
 
-   ![imagen](img/image4_4f5190e7.png)
+   ![imagen](img/image2_Bill.png)
 
-7. Select the **Settings** button in the upper-right corner of the screen.
+7. Locate and click the ellipsis "..." and then select **Settings**.
 
    ![imagen](img/image5_4f5190e7.png)
 
