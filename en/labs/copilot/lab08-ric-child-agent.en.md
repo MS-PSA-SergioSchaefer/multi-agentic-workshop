@@ -202,6 +202,6 @@ Great job! Ric is complete and can now send emails.
 
 This is what you completed in this lab:
 
-- ✅ Create an orchestrator agent
-- ✅ Create a skill
+- ✅ Create an orchestrator agent.
+- ✅ Create a skill.
 - ✅ Configured Work IQ for email routing.
