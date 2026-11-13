@@ -160,9 +160,9 @@ After sending:
 
 ## Bill will use Work IQ to send the email by the skill. 
 
-## 🧠 What is a Work IQ?
+## 🧠 What is a **Work IQ**?
 
-Work IQ is a workplace intelligence layer that enables agents to access and reason over organizational and business data, context, and tools. It continuously builds a semantic understanding across Microsoft 365 and external systems with built-in, permission-aware governance.
+**Work IQ** is a workplace intelligence layer that enables agents to access and reason over organizational and business data, context, and tools. It continuously builds a semantic understanding across Microsoft 365 and external systems with built-in, permission-aware governance.
 
 
 By default, **Work IQ** is enabled when an Agent is created, we will verify its configuration to ensure that the skill and agent can send emails on behalf of the user.
@@ -171,7 +171,7 @@ By default, **Work IQ** is enabled when an Agent is created, we will verify its 
 
    ![imagen](img/image13_4f5190e7.png)
 
-3. The pop-up window will ask you to create a new Office 365 connection. Select **Create**.
+3. The pop-up window will select the ">" in the **Outlook mail** section.
 
    ![imagen](img/image14_4f5190e7.png)
 
