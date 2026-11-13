@@ -185,11 +185,14 @@ Done! You can now test Bill's skill.
 
 ## Test Bill's Skill
 
-Run the following prompt in Bill’s test window:
+1. From the top menu select the **Preview** tab.
+
+2. Enter the below prompt and verify your account got the [email](https://outlook.office.com/). 
 
 ```text
 Send an email with the following information: The purchase orders from the customer CID-069 are up to date
 ```
+   ![imagen](img/image16.1_4f5190e7.png)
 
 ---
 
