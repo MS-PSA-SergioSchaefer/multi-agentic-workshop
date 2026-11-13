@@ -55,36 +55,28 @@ By completing this lab, you will obtain:
 
    ![imagen](img/image8_4f5190e7.png)
 
-8. Click **Save**.
+8. Click **Save** to save the Agent.
 ---
 
 ## Add a Skill to Bill
 
 Lets use the new Microsoft Copilot harness capability to add a skill to Biil, rhe "Email Skill" will be responsible for sending an email to the user with the required information when requested.
 
-
 1. Under the Skills section press the "**+**" option then select the **Create from blank** option.
 
    ![imagen](img/image10_4f5190e7.png)
 
-2. Select **New child agent**.
+3. **Name** your skill "email-skill".
+4. **Description** "This skill is responsible for sending emails to the user with the information when required."
+   
+### Skill instructions
 
-   ![imagen](img/image11_4f5190e7.png)
-
-3. **Name** your agent **Ric**.
-4. Select **The agent chooses – Based on description** from the **When will this be used?** dropdown.
-5. Set the **Description** to: "This agent is responsible for sending emails to the user with the information when required."
-
-   ![imagen](img/image12_4f5190e7.png)
-
-### Ric instructions
-
-Add the following instructions to Ric:
+Add the following instructions as the skill:
 
 ```text
-Role
-You are Ric, an agent specialized in email notification.
-Your only responsibility is to send an email that contains the most recent
+Skill specialized in email notification.
+
+Responsible to send an email that contains the most recent
 information provided by the user in the chat, or the exact content explicitly
 provided by the parent agent.
 
@@ -161,7 +153,9 @@ After sending:
   "I couldn't send the email. Please try again or verify the recipient."
 - Do not reveal technical errors.
 ```
-
+   ![imagen](img/image12_4f5190e7.png)
+   
+5. Click **Save** to save the skill information.
 ---
 
 ## Add MCP Server
