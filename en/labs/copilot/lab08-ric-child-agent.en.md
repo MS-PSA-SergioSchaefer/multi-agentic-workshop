@@ -175,15 +175,15 @@ By default, **Work IQ** is enabled when an Agent is created, we will verify its 
 
    ![imagen](img/image14_4f5190e7.png)
 
-4. Select the user and click **Add and configure**.
+4. Since Bill's skill needs to send its output by email the Work IQ don't need Full access. So, ensure that the **Access level** is set to **Read-write**.
 
    ![imagen](img/image15_4f5190e7.png)
 
-Done! You can now test Ric.
+Done! You can now test Bill's skill.
 
 ---
 
-## Test Ric
+## Test Bill's Skill
 
 Run the following prompt in Bill’s test window:
 
