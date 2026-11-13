@@ -6,7 +6,7 @@ In this hands-on lab, you will create the initial definition of Bill using the n
 
 While doing so, you'll also explore the Microsoft Copilot harness capability by iteratively refining a skill: The "Email Skill" will be responsible for sending an email to the user with the required information when requested.
 
-## 🧠 What is a skill?
+## 🧠 What is a Skill?
 
 Skills are reusable capabilities available to Microsoft Copilot harness agents in Copilot Studio. Each skill provides focused guidance for a specific scenario, business process, or task by defining when it should be used, what information to collect, which tools to call, and how the agent should respond.
 
@@ -71,7 +71,7 @@ Lets use the new Microsoft Copilot harness capability to add a skill to Biil, rh
    
 ### Skill instructions
 
-Add the following instructions as the skill:
+Add the following skill instructions:
 
 ```text
 Skill specialized in email notification.
@@ -158,12 +158,16 @@ After sending:
 5. Click **Save** to save the skill information.
 ---
 
-## Add MCP Server
+## Bill will use Work IQ to send the email by the skill. 
 
-Now we will add the **Email Management MCP Server** as an agent tool.
+## 🧠 What is a Work IQ?
 
-1. In **Tools**, select **+ Add**.
-2. Search for **Email Management MCP Server** and select the connector.
+Work IQ is a workplace intelligence layer that enables agents to access and reason over organizational and business data, context, and tools. It continuously builds a semantic understanding across Microsoft 365 and external systems with built-in, permission-aware governance.
+
+
+By default, **Work IQ** is enabled when an Agent is created, we will verify its configuration to ensure that the skill and agent can send emails on behalf of the user.
+
+1. Click the **Work IQ** tool under the Tools section.
 
    ![imagen](img/image13_4f5190e7.png)
 
