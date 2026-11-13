@@ -63,7 +63,7 @@ By completing this lab, you will obtain:
 Lets use the new Microsoft Copilot harness capability to add a skill to Biil, rhe "Email Skill" will be responsible for sending an email to the user with the required information when requested.
 
 
-1. **Navigate** to the **Agents** tab within the Bill agent (this is where you add specialist agents) and select **Add**.
+1. Under the Skills section press the "**+**" option then select the **Create from blank** option.
 
    ![imagen](img/image10_4f5190e7.png)
 
