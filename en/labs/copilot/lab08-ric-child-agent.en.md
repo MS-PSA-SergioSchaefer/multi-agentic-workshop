@@ -51,37 +51,17 @@ By completing this lab, you will obtain:
 
    ![imagen](img/image2_Bill.png)
 
-7. Locate and click the ellipsis "..." and then select **Settings**.
+7. Under the **Knowledge** section remove the "Search all websites" pre-set option.
 
-   ![imagen](img/image5_4f5190e7.png)
-
-   Review the page and make sure the following settings are applied:
-
-   | Setting | Value |
-   |---|---|
-   | Use generative AI orchestration for agent responses | **Yes** |
-   | Deep reasoning | **Disabled** |
-   | Allow other agents to connect to and use this agent | **Enabled** |
-   | Continue using retired models | **Disabled** |
-   | Content moderation | **Moderate** |
-   | Collect user reactions to agent messages | **Enabled** |
-   | Use general knowledge | **Disabled** |
-   | Use web information | **Disabled** |
-   | File upload | **Enabled** |
-   | Code interpreter | **Disabled** |
-
-   ![imagen](img/image6_4f5190e7.png)  
-   ![imagen](img/image7_4f5190e7.png)  
    ![imagen](img/image8_4f5190e7.png)
 
 8. Click **Save**.
-9. Click the **X** in the upper-right corner to close the settings menu.
-
-   ![imagen](img/image9_4f5190e7.png)
-
 ---
 
-## Add Ric as a Child Agent
+## Add a Skill to Bill
+
+Lets use the new Microsoft Copilot harness capability to add a skill to Biil, rhe "Email Skill" will be responsible for sending an email to the user with the required information when requested.
+
 
 1. **Navigate** to the **Agents** tab within the Bill agent (this is where you add specialist agents) and select **Add**.
 
