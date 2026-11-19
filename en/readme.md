@@ -64,7 +64,7 @@ Examples of analytical and planning questions:
 ### <a id="data-layer"></a>Microsoft Fabric – Data layer
 
 - **Mark (Data Agent)**
-  Fabric Data Agent that interprets natural language and queries the semantic model built over the `db_retail` SQL database (tables `customer`, `orders`, `orderline`, `product`). It reconstructs exact transactional facts and returns them as traceable data, without interpretation.
+  Fabric Data Agent developed in three comparable versions: Mark v1 queries the `db_retail` SQL database directly, Mark v2 uses the governed `sm_retail` semantic model and DAX measures, and Mark IQ combines the semantic model with a Fabric IQ ontology (entity types, relationships, and business rules materialized as a graph). The same ontology is also exposed through MCP to agents outside Fabric.
 
 #### Database documentation
 
@@ -116,7 +116,10 @@ The workshop is divided into independent but connected labs, organized by archit
 ### 1. Microsoft Fabric labs
 
 - [Lab 1 – Environment setup: Fabric capacity, workspace, SQL database, and semantic model](./labs/fabric/lab01-data-setup.en.md)
-- [Lab 2 – Mark Agent: Data Agent over the retail semantic model](./labs/fabric/lab02-mark-facts-agent.en.md)
+- [Lab 2 – Mark v1: Data Agent over the retail SQL database](./labs/fabric/lab02-mark-facts-agent.en.md)
+- [Lab 3 – Mark v2: Data Agent over the retail semantic model and governed measures](./labs/fabric/lab03-mark-v2-semantic-model.en.md)
+- [Lab 4 – Mark IQ: Fabric IQ ontology (entities, relationships, rules) plus governed measures](./labs/fabric/lab04-mark-fabric-iq-ontology.en.md)
+- [Lab 5 (optional) – Mark everywhere: consume the Fabric IQ ontology through MCP in VS Code and Copilot Studio](./labs/fabric/lab05-mark-fabric-iq-mcp.en.md)
 
 ### 2. Microsoft Foundry labs
 
