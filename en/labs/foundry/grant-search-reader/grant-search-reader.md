@@ -1,64 +1,158 @@
 # Grant Search read access to the Foundry project
 
-Use these steps to give the Foundry project's managed identity read access to Azure AI Search.
+Use these steps to give a Foundry project's system-assigned managed identity
+read access to its connected Azure AI Search service. This applies to connections
+using `ProjectManagedIdentity` authentication, not every agent tool error.
+
+The role grants read access across the selected Search service, not just to one
+index or knowledge base. Other agents using the same project identity share
+that access. Confirm that this scope is appropriate before proceeding.
 
 ## 1. Open Azure Cloud Shell
 
 Open [Azure Cloud Shell](https://shell.azure.com/) and select **Bash**.
-Cloud Shell signs you in automatically. Your account needs permission to create role assignments, such as **Owner** or **Role Based Access Control Administrator** at the target scope.
+Cloud Shell signs you in automatically. Examples below use Bash, not PowerShell.
+Your account needs access to inspect the target resources and role assignments.
+Creating an assignment requires `Microsoft.Authorization/roleAssignments/write`
+at the Search scope, for example through **Owner**, **User Access Administrator**,
+or **Role Based Access Control Administrator**, subject to assignment conditions.
 
-## 2. Upload the script
+The Search service must accept Microsoft Entra ID authentication. Confirm that
+the connection uses `ProjectManagedIdentity`, the expected Search endpoint, and
+the appropriate token audience. See the [CLI repair guide](README.md) for
+PowerShell-based connection and current project identity checks.
 
-Use Cloud Shell's **Upload/Download files** button to upload `grant-search-reader.sh` from this folder.
+## 2. Prepare and check your own values
 
-## 3. Run the script
+Replace every angle-bracket placeholder locally. Use the subscription and
+resource group containing **Search**, which may differ from those containing
+Foundry. Both must use a compatible tenant/identity configuration.
+
+Find the Foundry project's current system-assigned managed identity
+**Object (principal) ID** in its identity settings. Do not use the parent
+Foundry account identity, an agent identity, or a client/application ID. Recheck
+the principal ID if the project was recreated.
+
+```bash
+subscription_id="<search-subscription-id>"
+resource_group="<search-resource-group>"
+search_service="<search-service-name>"
+principal_id="<foundry-project-managed-identity-principal-id>"
+scope="/subscriptions/${subscription_id}/resourceGroups/${resource_group}/providers/Microsoft.Search/searchServices/${search_service}"
+
+az account show --subscription "$subscription_id" \
+  --query '{subscription:name,subscriptionId:id,tenantId:tenantId}' --output json
+
+az search service show \
+  --subscription "$subscription_id" \
+  --resource-group "$resource_group" \
+  --name "$search_service" \
+  --query '{name:name,id:id}' --output json
+
+az role assignment list \
+  --subscription "$subscription_id" \
+  --scope "$scope" \
+  --include-inherited \
+  --query "[?principalId=='$principal_id'].{Role:roleDefinitionName,Scope:scope}" \
+  --output table
+```
+
+Run commands separately and stop on failure. Confirm the subscription, tenant,
+service, and identity locally. If `Search Index Data Reader` or another role
+already grants the required access, skip creating an assignment and investigate
+any remaining retrieval failure. An empty list alone is not sufficient evidence
+unless your account can read role assignments.
+
+## 3. Review, upload, and run the script
+
+Review [grant-search-reader.sh](grant-search-reader.sh) before uploading it with
+Cloud Shell's **Upload/Download files** button. The script has example and
+environment-specific defaults; they are **not** a configuration for your project.
+Do not accept them automatically.
 
 ```bash
 bash grant-search-reader.sh
 ```
 
-## 4. Enter the parameters
+## 4. Enter all four parameters explicitly
 
-Press **Enter** to accept each default, or enter a different value.
+The script prompts interactively; it does not automatically reuse the shell
+variables from step 2. Enter the same verified values at each prompt.
 
-| Parameter | Default |
+| Prompt | Value to enter |
 | --- | --- |
-| Subscription ID | `xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx` |
-| Search service resource group | `rg-contoso-retail` |
-| Azure AI Search service name | `aip-contosoretail-xxxxx-xxxxxx-xxxxx` |
-| Foundry project managed identity principal ID | `xxxxx-xxxxx-xxxxx-xxxxx-xxxxxx` |
+| Subscription ID | Your Search subscription ID |
+| Search service resource group | Your Search resource group name |
+| Azure AI Search service name | Your connected Search service name |
+| Foundry project managed identity object (principal) ID | Your current project identity's principal ID |
 
-For another project, find its managed identity's **Object (principal) ID** in the project's identity settings. Do not use the agent's identity or a client/application ID.
+Subscription and principal IDs must be valid UUIDs. Resource groups must be
+names, not resource paths. The script validates input format, but that does not
+prove the principal belongs to the intended project or the service is the
+connection's actual target.
 
 ## 5. Confirm the assignment
 
-Review the displayed principal ID and scope. Enter `y` to grant **Search Index Data Reader**, or press **Enter** to cancel.
+Review the displayed principal ID and service scope against step 2. Enter `y`
+only if both are correct and the read permission is missing. Press **Enter** to
+cancel without creating an assignment.
 
-The role permits reading indexes across the selected Search service; it does not permit modifying documents.
+**Search Index Data Reader** permits reading index data, not modifying documents.
+Do not grant Contributor, enable API keys, widen network access, or disable TLS
+validation to work around a retrieval error.
 
 ## 6. Verify the assignment
 
-For the default values, run:
+In the same Bash session, use the verified variables from step 2:
 
 ```bash
 az role assignment list \
-  --subscription "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx" \
-  --assignee "4d050219-c84c-4d03-9be5-3fbc9c8000a1" \
-  --scope "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/rg-contoso-retail/providers/Microsoft.Search/searchServices/aip-contosoretail-xxxxx-xxxxxx-xxxxx" \
-  --query "[?roleDefinitionName=='Search Index Data Reader'].{Role:roleDefinitionName,Principal:principalId,Scope:scope}" \
+  --subscription "$subscription_id" \
+  --scope "$scope" \
+  --include-inherited \
+  --query "[?principalId=='$principal_id' && roleDefinitionName=='Search Index Data Reader'].{Role:roleDefinitionName,Scope:scope}" \
   --output table
 ```
 
-If you entered different parameters, replace the corresponding values in this command.
+If you changed any values at the script prompts, update the corresponding shell
+variables and rebuild `scope` before verifying. A visible role assignment does
+not prove that data-plane authorization has propagated yet.
 
 ## 7. Test the agent
 
-Allow a few minutes for permissions to propagate. Open `Anders` in the Foundry playground and start a new conversation.
+Allow several minutes for RBAC propagation. Open your project in
+[Microsoft Foundry](https://ai.azure.com/), select your agent and intended version,
+and start a new playground conversation.
 
-For `knowledgebaseXXX`, try:
+Use a non-sensitive question with a known answer and source in your knowledge
+base. For example, where your documents support it:
 
 > Use the knowledge base to identify the document title and its subject in one sentence. Cite the source. Do not use web search.
 
-The previous successful test identified the **2024 Procaliber Alloy Service Manual** and included a source citation.
+Inspect the tool trace to confirm the expected knowledge-base retrieval tool ran
+without error. Check the answer against the known source and verify its structured
+citation where supported. HTTP success or a plausible answer alone is insufficient.
+Live requests may incur model and Search usage charges.
 
-**Note:** This role assignment is already applied for the default project and Search service.
+If retrieval still fails after propagation, recheck the connection authentication,
+current project identity, target service, and effective permissions. Investigate
+network restrictions, Search authentication settings, indexing, and knowledge-base
+configuration rather than broadening permissions without evidence.
+
+## Public sharing
+
+Keep populated commands, role-assignment output, tool traces, and test results
+private until sanitized. Redact tenant/subscription/principal IDs, resource names,
+endpoints, request IDs, source URLs, document content, and personal information.
+Never publish tokens, API keys, or connection secrets. Resource IDs are not
+credentials, but can reveal infrastructure details.
+
+This guide uses placeholders and does not assert that access is already granted
+in any environment. Review the companion script and other files separately before
+publishing a directory; sanitizing this document does not sanitize them or
+repository history.
+
+## References
+
+- [Azure AI Search role-based access control](https://learn.microsoft.com/en-us/azure/search/search-security-rbac)
+- [Foundry MCP authentication](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/mcp-authentication)

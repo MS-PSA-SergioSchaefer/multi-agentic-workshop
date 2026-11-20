@@ -17,10 +17,10 @@ prompt_value() {
   printf '%s' "${value:-$default}"
 }
 
-subscription_id="$(prompt_value 'Subscription ID' 'a3c8c0f4-f849-4b31-bbd3-737858cc843f')"
+subscription_id="$(prompt_value 'Subscription ID' 'xxxxxxx-xxxxxx-xxxxx-xxxx-xxxxxxxxxx')"
 resource_group="$(prompt_value 'Search service resource group' 'rg-contoso-retail')"
 search_service="$(prompt_value 'Azure AI Search service name' 'aip-contosoretail-bu5o6-srch-jzzs')"
-principal_id="$(prompt_value 'Foundry project managed identity object (principal) ID' '4d050219-c84c-4d03-9be5-3fbc9c8000a1')"
+principal_id="$(prompt_value 'Foundry project managed identity object (principal) ID' 'xxxxxxx-xxxxxx-xxxxx-xxxx-xxxxxxxxxx')"
 
 uuid_pattern='^[[:xdigit:]]{8}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{12}$'
 if [[ ! "$subscription_id" =~ $uuid_pattern || ! "$principal_id" =~ $uuid_pattern ]]; then
