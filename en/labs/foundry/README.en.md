@@ -199,6 +199,10 @@ Modern Linux-based model with Managed Identity authentication. The Storage Accou
 
 > **Note:** The Flex Consumption SCM endpoint may take time to become available (DNS resolution). The deployment script includes retry logic and automatic wait.
 
+Foundry project creation and model deployment run sequentially to avoid account-level `RequestConflict` errors. If another deployment is using the account, let it finish before retrying. The script stops if the account stays busy for five minutes and displays Azure CLI errors when publishing fails.
+
+On Linux and macOS, the script uses the system temporary directory and includes hidden build folders such as `.azurefunctions` in the ZIP package required by the Functions runtime.
+
 1. **Open a PowerShell terminal** at the root of the repository.
 
 2. **Navigate to the Flex Consumption folder:**

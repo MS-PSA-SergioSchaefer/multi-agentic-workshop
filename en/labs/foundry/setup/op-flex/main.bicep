@@ -253,6 +253,10 @@ resource aiProject 'Microsoft.CognitiveServices/accounts/projects@2025-06-01' = 
 resource gptDeployment 'Microsoft.CognitiveServices/accounts/deployments@2025-06-01' = {
   parent: aiFoundry
   name: gptDeploymentName
+  // Foundry rejects concurrent project and model operations on the same account.
+  dependsOn: [
+    aiProject
+  ]
   sku: {
     name: 'Standard'
     capacity: gptDeploymentCapacity

@@ -164,7 +164,7 @@ if (-not [string]::IsNullOrWhiteSpace($TenantName)) {
   "outputs": { "s": { "type": "string", "value": "[substring(uniqueString(parameters('t')),0,5)]" } }
 }
 '@
-    $suffixTempFileForPreserve = Join-Path $env:TEMP "suffix-calc-preserve.json"
+    $suffixTempFileForPreserve = Join-Path ([System.IO.Path]::GetTempPath()) "suffix-calc-preserve.json"
     [System.IO.File]::WriteAllText($suffixTempFileForPreserve, $suffixTemplateForPreserve, [System.Text.UTF8Encoding]::new($false))
     $suffixForNames = az deployment group create `
         --resource-group $ResourceGroupName `
@@ -203,7 +203,7 @@ $suffixTemplate = @'
   "outputs": { "s": { "type": "string", "value": "[substring(uniqueString(parameters('t')),0,5)]" } }
 }
 '@
-$suffixTempFile = Join-Path $env:TEMP "suffix-calc.json"
+$suffixTempFile = Join-Path ([System.IO.Path]::GetTempPath()) "suffix-calc.json"
 [System.IO.File]::WriteAllText($suffixTempFile, $suffixTemplate, [System.Text.UTF8Encoding]::new($false))
 $suffixResult = az deployment group create `
     --resource-group $ResourceGroupName `
@@ -247,7 +247,7 @@ function Wait-ForFoundryAccountIdle {
         Start-Sleep -Seconds 15
     }
 
-    Write-Warning "Timed out waiting for '$AccountName' to become idle. Continuing anyway."
+    throw "Timed out waiting for '$AccountName' to become idle. Wait for the active operation to finish before retrying."
 }
 
 $foundryAccountName = if ([string]::IsNullOrWhiteSpace($suffixResult)) { $null } else { "ais-contosoretail-$suffixResult" }
@@ -274,7 +274,7 @@ while ($true) {
         --output none
 
     if ($LASTEXITCODE -ne 0) {
-        Write-Error "Could not start the deployment. Check that there are no soft-deleted resources (az cognitiveservices account list-deleted)."
+        Write-Error "Could not start the deployment. Review the Azure CLI error above for the cause."
         exit 1
     }
 
@@ -400,9 +400,9 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 # Create zip package for deployment
-$zipPath = Join-Path $env:TEMP "fxcontosoretail-publish.zip"
+$zipPath = Join-Path ([System.IO.Path]::GetTempPath()) "fxcontosoretail-publish.zip"
 if (Test-Path $zipPath) { Remove-Item $zipPath -Force }
-Compress-Archive -Path "$publishDir\*" -DestinationPath $zipPath -Force
+[System.IO.Compression.ZipFile]::CreateFromDirectory($publishDir, $zipPath)
 
 # Wait for the SCM endpoint to be resolvable via DNS (Flex Consumption takes a moment)
 $scmHost = "$functionAppName.scm.azurewebsites.net"
@@ -426,17 +426,19 @@ $maxRetries = 3
 $deploySuccess = $false
 for ($attempt = 1; $attempt -le $maxRetries; $attempt++) {
     Write-Host "  Deploying to $functionAppName (attempt $attempt/$maxRetries)..." -ForegroundColor Gray
-    az functionapp deployment source config-zip `
+    $zipDeployOutput = az functionapp deployment source config-zip `
         --resource-group $ResourceGroupName `
         --name $functionAppName `
         --src $zipPath `
         --timeout 600 `
-        --output none 2>&1 | Out-Null
+        --output none 2>&1
 
     if ($LASTEXITCODE -eq 0) {
         $deploySuccess = $true
         break
     }
+
+    $zipDeployOutput | ForEach-Object { Write-Host $_ }
 
     if ($attempt -lt $maxRetries) {
         $waitSecs = $attempt * 30
