@@ -6,7 +6,7 @@ The architecture is organized into three well‑defined layers:
 
 - **Microsoft Fabric** as the data layer: hosts the retail SQL database and a Data Agent that answers natural-language questions.
 - **Microsoft Foundry** as the reasoning and execution layer: agents that generate HTML reports via OpenAPI and plan marketing campaigns by querying the database.
-- **Copilot Studio** as the orchestration and conversational experience layer: an orchestrator agent that connects all agents, a product agent with knowledge in SharePoint, and a child agent that sends email.
+- **Copilot Studio** as the orchestration and conversational experience layer: an orchestrator agent that connects all agents, a product agent with knowledge in SharePoint, and a skill that sends email.
 
 We will explore orchestration capabilities in both Copilot Studio and Microsoft Foundry.
 
@@ -64,7 +64,7 @@ Examples of analytical and planning questions:
 ### <a id="data-layer"></a>Microsoft Fabric – Data layer
 
 - **Mark (Data Agent)**
-  Fabric Data Agent developed in three comparable versions: Mark v1 queries the `db_retail` SQL database directly, Mark v2 uses the governed `sm_retail` semantic model and DAX measures, and Mark IQ combines the semantic model with a Fabric IQ ontology (entity types, relationships, and business rules materialized as a graph). The same ontology is also exposed through MCP to agents outside Fabric.
+  Fabric Data Agent that interprets natural language and queries the semantic model built over the `db_retail` SQL database (tables `customer`, `orders`, `orderline`, `product`). It reconstructs exact transactional facts and returns them as traceable data, without interpretation.
 
 #### Database documentation
 
@@ -87,9 +87,9 @@ You can find the full documentation here: [Database Documentation](../assets/dat
 - **Charles (Product Q&A Agent)**
   Product analyst agent that answers questions using documentation stored in SharePoint as its knowledge base. It can also perform competitive analysis and market comparisons using public information on demand.
 - **Bill (Orchestrator)**
-  Central orchestrator. Detects user intent and delegates to the appropriate agent: connects external Fabric agents (Mark) and Foundry agents (Anders) with internal Copilot Studio agents (Charles, Ric). It is published in Microsoft 365 and Teams.
-- **Ric (Child Agent)**
-  Child agent of Bill responsible for sending emails to the user with the requested information (for example, query results or links to reports).
+  Central orchestrator. Detects user intent and delegates to the appropriate agent: connects external Fabric agents (Mark) and Foundry agents (Anders) with internal Copilot Studio agents (Charles). It is published in Microsoft 365 and Teams.
+  - **Email Skill**
+    Email Skill responsible for sending emails to the user with the requested information (for example, query results or links to reports).
 
 ### <a id="interoperability-layer"></a>Agent Interoperability Layer
 
@@ -116,10 +116,7 @@ The workshop is divided into independent but connected labs, organized by archit
 ### 1. Microsoft Fabric labs
 
 - [Lab 1 – Environment setup: Fabric capacity, workspace, SQL database, and semantic model](./labs/fabric/lab01-data-setup.en.md)
-- [Lab 2 – Mark v1: Data Agent over the retail SQL database](./labs/fabric/lab02-mark-facts-agent.en.md)
-- [Lab 3 – Mark v2: Data Agent over the retail semantic model and governed measures](./labs/fabric/lab03-mark-v2-semantic-model.en.md)
-- [Lab 4 – Mark IQ: Fabric IQ ontology (entities, relationships, rules) plus governed measures](./labs/fabric/lab04-mark-fabric-iq-ontology.en.md)
-- [Lab 5 (optional) – Mark everywhere: consume the Fabric IQ ontology through MCP in VS Code and Copilot Studio](./labs/fabric/lab05-mark-fabric-iq-mcp.en.md)
+- [Lab 2 – Mark Agent: Data Agent over the retail semantic model](./labs/fabric/lab02-mark-facts-agent.en.md)
 
 ### 2. Microsoft Foundry labs
 
@@ -132,10 +129,9 @@ The workshop is divided into independent but connected labs, organized by archit
 
 - [Lab 6 – Copilot Studio setup: environment, solution, and publisher](./labs/copilot/lab06-mcs-setup.en.md)
 - [Lab 7 – Charles Agent: product Q&A with SharePoint and market analysis](./labs/copilot/lab07-charles-copilot-agent.en.md)
-- [Lab 8 – Ric Agent: child agent for email sending + initial Bill configuration](./labs/copilot/lab08-ric-child-agent.en.md)
+- [Lab 8 – Initial Bill configuration and add the email skill](./labs/copilot/lab08-ric-child-agent.en.md)
 - [Lab 9 – Bill Orchestrator: connecting external (Mark, Anders) and internal (Charles) agents and defining orchestration rules](./labs/copilot/lab09-bill-orchestrator.en.md)
-- [Lab 10 – Give Bill oragnizational/work context with Work IQ](./labs/copilot/lab010-bill-workiq.en.md)
-- [Lab 11 – Publishing Bill in Microsoft 365 / Teams and end‑to‑end tests](./labs/copilot/lab011-bill-publishing.en.md)
+- [Lab 10 – Publishing Bill in Microsoft 365 / Teams and end‑to‑end tests](./labs/copilot/lab011-bill-publishing.en.md)
 
 ### 4. Microsoft Agent 365 lab (optional)
 
